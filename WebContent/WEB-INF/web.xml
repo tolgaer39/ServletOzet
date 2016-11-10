@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>ServletOzet</display-name>
+<!-- 
+	servlet tanımımı web.xml de yaptım diger yolla @annotation kullanarak da yapabiliyordum.
+
+ -->
+<servlet>
+	<servlet-name>MyServletContextName</servlet-name>
+	<servlet-class>_01_servletcontext.HelloServletContext</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>MyServletContextName</servlet-name>
+	<url-pattern>/helloservletcontext</url-pattern>
+</servlet-mapping>
+
+
+	
+<servlet>
+	<servlet-name>MyInitParamTest</servlet-name>
+	<servlet-class>_01_servletcontext.InitParamTest</servlet-class>
+	
+	<init-param>
+	<param-name>username</param-name>
+	<param-value>tolga</param-value>
+	</init-param>
+	
+	<!-- init parametreler sadece servlete ait parametrelerdir...
+	bu init parametlere tanımlı servlet ulasabilir diger servletler ulasamaz  -->
+	<!-- context parametreler ise tüm projeye ait parametrelerdir -->
+	<init-param>
+	<param-name>password </param-name>
+	<param-value>servlet password </param-value>
+	</init-param>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>MyInitParamTest</servlet-name>
+	<url-pattern>/initparamtest</url-pattern>
+</servlet-mapping>
+	
+	<!-- context parametreler publictir servletcontext tarafından ulasilir
+		 servletcontext objesini kullarak context parametrelerine ulasabiliyoruz. -->
+	
+<context-param>
+	<param-name>url</param-name>
+	<param-value> google.com</param-value>
+</context-param>
+
+</web-app>
